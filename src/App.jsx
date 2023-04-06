@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-import "./App.css";
+import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Routes/Route";
 
 function App() {
     return (
-        <div className="App">
-            <Navbar />
-        </div>
+        <>
+            <RouterProvider router={router} />
+        </>
     );
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-const myGigs = () => {
+const MyGigs = () => {
     return <div>myGigs</div>;
 };
 
-export default myGigs;
+export default MyGigs;
