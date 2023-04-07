@@ -6,8 +6,9 @@ import Add from "../pages/add/Add";
 import Messages from "../pages/messages/Messages";
 import MyGigs from "../pages/myGigs/myGigs";
 import Gigs from "../pages/gigs/Gigs";
-import Home from "../components/home";
+
 import Orders from "../pages/orders/Orders";
+import Home from "../pages/home/Home";
 
 export const router = createBrowserRouter([
     {
