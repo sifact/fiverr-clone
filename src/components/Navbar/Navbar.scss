@@ -8,13 +8,14 @@
     transition: 0.5s all ease;
     position: sticky;
     top: 0;
+    z-index: 999;
 
     &.active {
         background-color: white;
         color: black;
     }
     .container {
-        width: 1200px;
+        width: 1400px;
         display: flex;
         justify-content: space-between;
         padding: 20px 0px;
@@ -87,7 +88,7 @@
         border: 0.5px solid lightgray;
     }
     .menu {
-        width: 1200px;
+        width: 1400px;
         padding: 10px 0;
         display: flex;
         justify-content: space-between;

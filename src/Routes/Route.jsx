@@ -4,11 +4,13 @@ import Main from "../Layouts/Main";
 import Gig from "../pages/gig/Gig";
 import Add from "../pages/add/Add";
 import Messages from "../pages/messages/Messages";
-import MyGigs from "../pages/myGigs/myGigs";
+
 import Gigs from "../pages/gigs/Gigs";
 
 import Orders from "../pages/orders/Orders";
 import Home from "../pages/home/Home";
+import MyGigs from "../pages/myGigs/MyGigs";
+import Message from "../pages/message/Message";
 
 export const router = createBrowserRouter([
     {
@@ -36,8 +38,12 @@ export const router = createBrowserRouter([
                 element: <Add />,
             },
             {
-                path: "/messages/:id",
+                path: "/messages",
                 element: <Messages />,
+            },
+            {
+                path: "/message/123",
+                element: <Message />,
             },
             {
                 path: "/orders",

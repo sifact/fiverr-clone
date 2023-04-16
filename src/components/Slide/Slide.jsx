@@ -1,12 +1,11 @@
-import React, { Children } from "react";
+import React from "react";
 import "./Slide.scss";
-import { cards } from "../../data";
-import Slider from "infinite-react-carousel";
-import CatCard from "../CatCard/CatCard";
 
-const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+import Slider from "infinite-react-carousel";
+
+const Slide = ({ children, slidesToShow, arrowsScroll, bgColor }) => {
     return (
-        <div className="slide">
+        <div className="slide" style={{ background: bgColor }}>
             <div className="container">
                 <Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>
                     {children}
