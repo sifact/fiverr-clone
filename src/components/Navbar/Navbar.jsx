@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
 
 import user from "../../assets/user.jpg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 
 const Navbar = () => {
     const [active, setActive] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     const isActive = () => {
         window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -22,11 +24,17 @@ const Navbar = () => {
         };
     }, []);
 
-    const currentUser = {
-        id: 1,
-        userName: "John Doe",
-        isSeller: true,
+    const handleLogout = async () => {
+        try {
+            await newRequest.post("auth/logout");
+            localStorage.setItem("currentUser", null);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
     };
+
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     return (
         <div
@@ -44,16 +52,22 @@ const Navbar = () => {
                     <span>FiverR Business</span>
                     <span>Explore</span>
                     <span>English</span>
-                    <span>Sign in</span>
+                    <span>
+                        <Link to="/login">Sign in</Link>
+                    </span>
                     {!currentUser?.isSeller && <span>Become a Seller</span>}
-                    {!currentUser && <button>Join</button>}
+                    {!currentUser && (
+                        <button>
+                            <Link to="/register">Join</Link>
+                        </button>
+                    )}
                     {currentUser && (
                         <div
                             className="user"
                             onClick={() => setShowMenu(!showMenu)}
                         >
-                            <img src={user} alt="" />
-                            <span>{currentUser?.userName}</span>
+                            <img src={currentUser?.img || user} alt="" />
+                            <span>{currentUser?.username}</span>
 
                             {showMenu && (
                                 <div className="options">
@@ -65,7 +79,7 @@ const Navbar = () => {
                                     )}
                                     <Link to="/orders">Orders</Link>
                                     <Link to="/messages">Messages</Link>
-                                    <Link>Logout</Link>
+                                    <Link onClick={handleLogout}>Logout</Link>
                                 </div>
                             )}
                         </div>
